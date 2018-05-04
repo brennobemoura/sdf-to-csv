@@ -15,8 +15,8 @@ dataBase::~dataBase() {
     this->in = 0;
 }
 
-// Check if the string has the character staring at offset
-// By default, offset is setted with 0 index
+// Check if the string has the character starting at offset
+// By default, offset was set with 0 index
 bool dataBase::haschar(char c, string s, int offset) {
     for (unsigned int i = offset; i < s.length(); i++)
         if (c == s[i])
@@ -39,7 +39,7 @@ bool dataBase::hasstring(string c, string s, int at) {
 }
 
 // Maybe not working properly
-// Haddle with \n character, trying to ignore the rest of the string
+// Handle with \n character, try to ignore the rest of the string
 // Need to fix
 string dataBase::removeLine(string str, int countingLast) {
     if (!str.length())
@@ -69,8 +69,8 @@ string dataBase::removeLine(string str, int countingLast) {
     return str;
 }
 
-// This fuction check the lenght of headers block
-// If the columns doesn't has the same length, this fuction will fill the rows with empty data
+// This fuction check the length of the headers block
+// If the columns don't have the same length, this fuction will fill the rows with empty data
 void dataBase::checkConsistency(int ival, int offset) {
     int max = this->values->lengthValues(0);
     int cmp = this->values->lengthValues(ival);
@@ -82,8 +82,8 @@ void dataBase::checkConsistency(int ival, int offset) {
         this->values->insert(ival, "");
 }
 
-// This haddle the header of each block
-// The sdf that I got, all them has
+// This handle with the header of each block
+// The sdf that I got, all them had this style
 /*
 *   --Some Block header identifier
 *
@@ -102,7 +102,7 @@ string dataBase::getKey() {
     return removeEspaces(key);
 }
 
-// Get line with just one space
+// Returns the line with just one space
 // string readed: This      is a example
 // string out: This is a example
 string dataBase::removeEspaces(string line) {
@@ -145,7 +145,7 @@ string dataBase::strReplace(string rep, string to, string str) {
 }
 
 // This fuction don't work properly
-// The intetion is to read the lines that has data
+// The intention is to read the lines that has data
 // Cannot read header data, because it is a data title
 /*
 *   > <Data header>
@@ -156,7 +156,7 @@ string dataBase::strReplace(string rep, string to, string str) {
 *   > <Another Header>
 *   Example
 */
-// Has created to read data that is sequencial lines, like matrix
+// Was created to read data that are sequential lines, like matrix
 /*
 *   > <Data header>
 *   0, 1, 4, Some Value
@@ -202,7 +202,7 @@ bool dataBase::insert(string key, string value) {
 }
 
 // Trash file has the content that the dataBase can't understand like data ou column header
-// The indention is to not lose data, but because off some new lines between data, the algorithm can't read properly
+// The intention is to not lose data, but because of some new lines between data, the algorithm can't read properly
 bool dataBase::read_sdf(string file) {
     ifstream arq(file + ".sdf", ios::in);
     ofstream trash("trash_"+file+".csv", ios::out);
@@ -292,7 +292,7 @@ bool dataBase::to_csv(string file) {
         i++;
     }
 
-    // Cleaning all structure
+    // Clean all structure
     off.close();
     this->values->popAll();
     this->key->popAll();
